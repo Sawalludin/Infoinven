@@ -3,6 +3,10 @@
 use DB;
 use App\ProdukMasuk;
 use App\User;
+use App\ProdukKeluar;
+use App\ProdukPinjaman;
+
+
 
 class HomeController extends Controller {
 
@@ -37,7 +41,9 @@ class HomeController extends Controller {
 		$users = DB::table('users')->where('type','user')->count();
 		$users2 = DB::table('users')->where('type','admin')->count();
 		$produk_masuks = DB::table('produk_masuks')->count();
-		return view('infoinven.home')->with('users', $users)->with('users2',$users2)->with('produk_masuks',$produk_masuks);
+		$produk_pinjamen = DB::table('produk_pinjamen')->count();
+		$produk_keluars = DB::table('produk_keluars')->count();
+		return view('infoinven.home')->with('users', $users)->with('users2',$users2)->with('produk_masuks',$produk_masuks)->with('produk_pinjamen',$produk_pinjamen )->with('produk_keluars',$produk_keluars);
 	}
 
 	public function listprodukguest()

@@ -20,7 +20,7 @@ class CreateProdukPinjamenTable extends Migration {
 			$table->string('info_produk');
 			$table->string('nama_peminjam');
 			$table->integer('jumlah_pinjaman');
-			$table->string('tanggal_pinjaman');
+			
 			$table->string('tanggal_pengembalian');
 			$table->string('username_pengeluar');
 			$table->timestamps();

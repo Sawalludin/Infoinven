@@ -132,9 +132,15 @@ class InfoinvenController extends Controller {
 		return redirect(url('/list/produk/masuk'));
 	}
 
-	public function listprodukmasuk()
+	public function listprodukmasuk(Request $r)
 	{	
-		$data = array('data'=>ProdukMasuk::all());
+		if($r->input('cari')){
+			$data = array('data'=>ProdukMasuk::where('kode','LIKE', '%'.$r->input('cari').'%')->get());
+		}
+		else{
+			$data = array('data'=>ProdukMasuk::all());
+
+		}
 		return view('infoinven.masuk.listprodukmasuk')->with($data);
 	}
 
@@ -213,13 +219,32 @@ class InfoinvenController extends Controller {
 		return redirect(url('/list/produk/keluar'));
 	}
 
-	public function listprodukkeluar()
-	{	
-		$data = array('data'=>ProdukKeluar::all());
-		return view('infoinven.keluar.listprodukkeluar')->with($data);
+
+	public function listprodukkeluar(Request $k)
+	{		
+		if($k->input('cari')){
+			$data = array('data'=>ProdukKeluar::where('kode','LIKE', '%'.$k->input('cari').'%')->get());
+		}
+		else{
+			$data = array('data'=>ProdukKeluar::all());
+
+		}
+		return view('infoinven.keluar.listprodukkeluar')->with($data);	
+		
+	
+
+
 	}
 
-//----
+
+
+
+//----pinjaman
+
+
+
+
+
 public function tambahprodukpinjaman()
 	{	
 		$users = User::all();
@@ -235,23 +260,70 @@ public function tambahprodukpinjaman()
 		$post = new ProdukPinjaman;
 		$post->kode = \Input::get('kode');
 		$post->nama_produk = \Input::get('nama_produk');
+		$post->nama_peminjam = \Input::get('nama_peminjam');
 		$post->info_produk = \Input::get('info_produk');
 		$post->jumlah_pinjaman = \Input::get('jumlah_pinjaman');
+	
 		$post->username_pengeluar = \Input::get('username_pengeluar');
 
 		$post->save();
 
 		$post = ProdukMasuk::find(\Input::get('idProduk'));
-		$post->stok = \Input::get('stok');
+		$post->stok = $post->stok-\Input::get('jumlah_pinjaman');
 		$post->save();
 		return redirect(url('/list/produk/pinjaman'));
+	}	
+		public function produkpinjamanupdate()
+	{
+		$data = array(
+			'kode' => \Input::get('kode'),
+			'nama_produk' => \Input::get('nama_produk'),
+			'nama_peminjam' => \Input::get('nama_peminjam'),
+			'info_produk' => \Input::get('info_produk'),		
+			'jumlah_pinjaman' => \Input::get('jumlah_pinjaman'),
+			'tanggal_pengembalian' => \Input::get('tanggal_pengembalian'),
+			
+		);
+		\DB::table('produk_pinjamen')->where('id', \Input::get('id'))->update($data);
+		return redirect(url('/list/produk/pinjaman'));
+	}
+	public function listprodukpinjamandelete($id)
+	{
+		$data = array('data'=>ProdukPinjaman::find($id));
+		if($data['data']->username_pemasuk == \Auth::user()->username || \Auth::user()->type == 'admin'){
+			ProdukPinjaman::find($id)->delete();
+			return redirect(url('/list/produk/pinjaman'));
+		}
+		else{
+			abort(403);
+		}
 	}
 
-	public function listprodukpinjaman()
+
+	public function listprodukdetail($id)
 	{
-		$data = array('data'=>ProdukPinjaman::all());
-		return view('infoinven.peminjaman.listprodukpinjam')->with($data);
+		$data = array('data'=>ProdukPinjaman::find($id));
+		return view('infoinven.peminjaman.listprodukpinjamdetail')->with($data);
 	}
+	public function listprodukpinjamedit($id)
+	{
+		$data = array('data'=>ProdukPinjaman::find($id));
+		return view('infoinven.peminjaman.produkpinjamanedit')->with($data);
+	}
+	public function listprodukpinjaman(Request $p)
+	{
+				if($p->input('cari')){
+			$data = array('data'=>ProdukPinjaman::where('kode','LIKE', '%'.$p->input('cari').'%')->get());
+		}
+		else{
+			$data = array('data'=>ProdukPinjaman::all());
+
+		}
+		return view('infoinven.peminjaman.listprodukpinjam')->with($data);	
+		
+	
+
+		}
 //-----
 	public function profile()
 	{

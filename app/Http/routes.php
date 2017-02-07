@@ -37,9 +37,9 @@ Route::post('tambah/produk/masuk/save', 'InfoinvenController@tambahprodukmasuksa
 
 Route::get('list/produk/keluar', 'InfoinvenController@listprodukkeluar');
 Route::get('list/produk/keluar/detail/{id}', 'InfoinvenController@listprodukkeluardetail');
-Route::get('list/produk/keluar/delete/{id}', 'InfoinvenController@listprodukkeluardelete');
+
 Route::get('list/produk/keluar/edit/{id}', 'InfoinvenController@listprodukkeluaredit');
-Route::post('list/produk/keluar/edit/update', 'InfoinvenController@listprodukkeluarupdate');
+Route::post('list/produk/keluar/edit/update', 'InfoinvenController@listprodukkeluarupdate');                                                                    
 Route::get('tambah/produk/keluar', 'InfoinvenController@tambahprodukkeluar');
 Route::post('tambah/produk/keluar/save', 'InfoinvenController@tambahprodukkeluarsave');
 Route::post('ajax/produk/keluar','InfoinvenController@ajaxprodukkeluar');
@@ -49,6 +49,11 @@ Route::post('ajax/produk/keluar','InfoinvenController@ajaxprodukkeluar');
 Route::get('list/produk/pinjaman','InfoinvenController@listprodukpinjaman');
 Route::get('tambah/produk/pinjaman','InfoinvenController@tambahprodukpinjaman');
 Route::post('tambah/produk/pinjaman/save','InfoinvenController@tambahprodukpinjamansave');
+Route::get('list/produk/pinjam/detail/{id}', 'InfoinvenController@listprodukdetail');
+Route::get('list/produk/pinjam/edit/{id}', 'InfoinvenController@listprodukpinjamedit');
+Route::post('list/produk/pinjam/edit/update', 'InfoinvenController@produkpinjamanupdate');
+Route::get('list/produk/pinjam/delete/{id}', 'InfoinvenController@listprodukpinjamandelete');
+
 
 
 Route::get('profile', 'InfoinvenController@profile');

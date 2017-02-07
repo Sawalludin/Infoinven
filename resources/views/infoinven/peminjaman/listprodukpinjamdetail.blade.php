@@ -32,33 +32,37 @@
                                     <td>Nama Produk</td><td>:</td>
                                     <td>{{ $data->nama_produk }}</td>
                                 </tr>
+                                    <tr>
+                                    <td>Nama Peminjam</td><td>:</td>
+                                    <td>{{ $data->nama_peminjam }}</td>
+                                </tr>
+
+
                                 <tr>
                                     <td>Info Produk</td><td>:</td>
                                     <td>{{ $data->info_produk }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Stok</td><td>:</td>
-                                    <td>{{ $data->stok }} Pcs</td>
                                 </tr>
                                 <tr>
-                                    <td>Harga Beli</td><td>:</td>
-                                    <td>Rp.{{ $data->harga_beli }}/Pcs</td>
+                                    <td>Jumlah Yang Dipinjam</td><td>:</td>
+                                    <td>{{ $data->jumlah_pinjaman }}/Pcs</td>
+                                </tr>
+                                 <tr>
+                                    <td>Tanggal pengembalian</td><td>:</td>
+                                    <td>{{ $data->tanggal_pengembalian }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Harga Jual</td><td>:</td>
-                                    <td>Rp.{{ $data->harga_jual }}/Pcs</td>
-                                </tr>
-                                <tr>
-                                    <td>Username Pemasuk</td><td>:</td>
-                                    <td>{{ $data->username_pemasuk }}</td>
+                                    <td>Username Pengeluar</td><td>:</td>
+                                    <td>{{ $data->username_pengeluar }}</td>
                                 </tr>
                             </table>
                             <br>
                             @if( $data->username_pemasuk == \Auth::user()->username || \Auth::user()->type == 'admin')
-                                <a href="{{ url('/list/produk/masuk/edit/'.$data->id) }}"><div class="btn btn-primary">Edit</div></a>
-                                <a href="{{ url('/list/produk/masuk/delete/'.$data->id) }}" onclick="return confirm('Yakin Hapus ?')"><div class="btn btn-default">Hapus</div></a>
+                                <a href="{{ url('/list/produk/pinjam/edit/'.$data->id) }}"><div class="btn btn-primary">Edit</div></a>
+                                <a href="{{ url('/list/produk/pinjam/delete/'.$data->id) }}" onclick="return confirm('Yakin Hapus ?')"><div class="btn btn-default">Hapus</div></a>
                             @endif
-                            <a href="{{ url('/list/produk/masuk/') }}"><div class="btn btn-primary">Back</div></a><br><br>
+                            <a href="{{ url('/list/produk/pinjaman/') }}"><div class="btn btn-primary">Back</div></a><br><br>
                         <script>
                             $(function () {
                                 $('#hover, #striped, #condensed').click(function () {

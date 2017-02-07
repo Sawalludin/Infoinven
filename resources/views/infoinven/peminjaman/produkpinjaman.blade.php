@@ -26,17 +26,7 @@
 							<form action="{{ url('tambah/produk/pinjaman/save') }}" method="POST" enctype="multipart/form-data">
                             <table class="table hovered" style="width: 100%">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <tr>
-                                    <td>Kode</td>
-                                    <td>
-                                        <div class="input-control text full-size">
-                                            <input id="kode" class="form-control" readonly type="text" name="kode" id="kode" autocomplete="off" required>
-                                            <input id="namaproduk" class="form-control" readonly type="hidden" name="nama_produk" id="nama_produk" autocomplete="off" required>
-                                            <input class="form-control" value="{{ Auth::user()->username }}" name="username_pengeluar" id="username_pengeluar" type="hidden" autocomplete="off" required>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
+                                  <tr>
                                     <td>Nama Produk</td>
                                     <td>
                                         <div class="input-control text full-size">
@@ -49,6 +39,26 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Kode</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input id="kode" class="form-control" readonly type="text" name="kode" id="kode" autocomplete="off" required>
+                                            <input id="namaproduk" class="form-control" readonly type="hidden" name="nama_produk" id="nama_produk" autocomplete="off" required>
+                                            <input class="form-control" value="{{ Auth::user()->username }}" name="username_pengeluar" id="username_pengeluar" type="hidden" autocomplete="off" required>
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <td>Nama Peminjam</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input id="nama_peminjam" class="form-control" type="text" name="nama_peminjam" id="nama_peminjam" autocomplete="off" required>
+                                         
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+  
                                 <tr>
                                     <td>Info Produk</td>
                                     <td>
@@ -75,16 +85,9 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Stok Sisa</td>
-                                    <td>
-                                        <div class="form-group input-group">
-                                            <input readonly id="stoksisa" class="form-control" type="number" name="stok" id="stok" autocomplete="off" required>
-                                            <span class="input-group-addon">Pcs</span>
-                                        </div>
-                                    </td>
-                                </tr>
                                 
+                                <tr>
+ 
                                             
                                       
                                 <!-- <tr>

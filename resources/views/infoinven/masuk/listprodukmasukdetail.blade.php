@@ -42,11 +42,13 @@
                                 </tr>
                                 <tr>
                                     <td>Harga Beli</td><td>:</td>
-                                    <td>Rp.{{ $data->harga_beli }}/Pcs</td>
+                                    <td>Rp. {{ number_format($data->harga_beli) }}/Pcs</td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>Harga Jual</td><td>:</td>
-                                    <td>Rp.{{ $data->harga_jual }}/Pcs</td>
+                                    <td>Rp. {{ number_format($data->harga_jual) }}/Pcs</td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>Username Pemasuk</td><td>:</td>

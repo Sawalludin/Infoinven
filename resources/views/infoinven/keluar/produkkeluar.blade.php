@@ -21,6 +21,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Tambah Produk Keluar</div>
+                  
 					<div class="panel-body">
 						<div class="col-md-9">
 							<form action="{{ url('tambah/produk/keluar/save') }}" method="POST" enctype="multipart/form-data">

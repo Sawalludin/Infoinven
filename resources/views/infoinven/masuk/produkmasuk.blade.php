@@ -44,10 +44,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Info Produk</td>
-                                    <td>
-                                        <div class="input-control text full-size">
-                                            <input class="form-control" name="info_produk" id="info_produk" type="text" autocomplete="off" required>
+                                        <td>Jenis Kelamin</td>
+                                    <td>                        
+                                        <div class="input-control select">
+                                            <select class="form-control" name="info_produk" id="info_produk"  required>
+                                                <option>Baru</option>
+                                                <option>Bekas</option>
+                                                <option>Rusak</option>
+                                                <option>Dll</option>
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>

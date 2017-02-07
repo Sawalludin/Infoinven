@@ -9,6 +9,8 @@
 <link href="{{ url('/css/datepicker3.css') }}" rel="stylesheet">
 <link href="{{ url('/css/bootstrap-table.css') }}" rel="stylesheet">
 <link href="{{ url('/css/styles.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <!--Icons-->
 <script src="{{ url('/js/lumino.glyphs.js') }}"></script>
@@ -181,7 +183,13 @@
 	<script src="{{ url('/js/easypiechart.js') }}"></script>
 	<script src="{{ url('/js/easypiechart-data.js') }}"></script>
 	<script src="{{ url('/js/bootstrap-datepicker.js') }}"></script>
-	<script src="{{ url('/js/bootstrap-table.js') }}"></script>
+	<script src="{{ url('/js/bootstrap-table.js') }}"></script>\
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 	@yield('script')
 	<script>
 		$('#calendar').datepicker({

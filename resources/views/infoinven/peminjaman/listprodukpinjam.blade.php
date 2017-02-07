@@ -19,8 +19,15 @@
 		
 		<div class="row">
 			<div class="col-md-12">
+				
 				<div class="panel panel-default">
-					<div class="panel-heading">List Produk Keluar</div>
+					<div class="panel-heading">List Produk Pinjaman
+					</div>
+					<form method="GET">
+					<div style="float:right;">
+						<input placeholder="Masukkan Kode Produk" type="text" name="cari">							<button>Cari</button>
+					</div>
+					</form>
 					<div class="panel-body">
 						<table data-toggle="table" id="table-style"  data-row-style="rowStyle">
 						    <thead>
@@ -39,15 +46,15 @@
                                 <?php $i = 1; ?>
                                     @foreach($data as $post)
                                         <tr>
-                                            <td>{{ $i++}}.</td>
+                                            <td>{{ $i++}}</td>
                                             <td>{{ $post->kode }}</td>
                                             <td>{{ $post->nama_produk }}</td>
                                             <td>{{ $post->info_produk }}</td>
                                             <td>{{ $post->nama_peminjam }}</td>
                                             <td>{{ $post->jumlah_pinjaman }} Pcs</td>
-                                            <th>{{ $post->tanggal_pinjaman}}</th>
-                                            <th>{{ $post->tanggal_pengembalian}}</th>
                                             <td>{{ $post->created_at }}</td>
+                                            <td>{{ $post->tanggal_pengembalian}}</td>
+                                            
                                             <td>{{ $post->username_pengeluar }}</td>
                                              <td><a class="btn btn-info" href="{{ url('/list/produk/pinjam/detail/'.$post->id) }}">Detail</a></td>
                                         </tr>
